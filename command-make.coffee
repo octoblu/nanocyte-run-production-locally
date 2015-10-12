@@ -52,22 +52,24 @@ class CommandMake
       flowToken: @flowToken
       triggerUuid: @triggerUuid
 
-    deployTemplate = fs.readFileSync('./templates/deploy-flow.template')
+    templatePath = path.join(__dirname, 'templates')
+
+    deployTemplate = fs.readFileSync(path.join(templatePath, 'deploy-flow.template'))
     @deployScript = _.template(deployTemplate) options
 
-    clickTriggerTemplate = fs.readFileSync('./templates/click-trigger.template')
+    clickTriggerTemplate = fs.readFileSync(path.join(templatePath, 'click-trigger.template'))
     @clickTriggerScript = _.template(clickTriggerTemplate) options
 
-    onStartTemplate = fs.readFileSync('./templates/on-start.template')
+    onStartTemplate = fs.readFileSync(path.join(templatePath, 'on-start.template'))
     @onStartScript = _.template(onStartTemplate) options
 
-    pulseSubscribeTemplate = fs.readFileSync('./templates/pulse-subscribe.template')
+    pulseSubscribeTemplate = fs.readFileSync(path.join(templatePath, 'pulse-subscribe.template'))
     @pulseSubscribeScript = _.template(pulseSubscribeTemplate) options
 
     callback()
 
   writeTemplates: =>
-    dirname = path.join(__dirname, @outputDirectory)
+    dirname = @outputDirectory
     console.log "Saving files to #{dirname}"
     fs.mkdirpSync dirname
 
