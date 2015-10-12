@@ -53,9 +53,16 @@ class CommandMake
       triggerUuid: @triggerUuid
 
     deployTemplate = fs.readFileSync('./templates/deploy-flow.template')
-    clickTriggerTemplate = fs.readFileSync('./templates/click-trigger.template')
     @deployScript = _.template(deployTemplate) options
+
+    clickTriggerTemplate = fs.readFileSync('./templates/click-trigger.template')
     @clickTriggerScript = _.template(clickTriggerTemplate) options
+
+    onStartTemplate = fs.readFileSync('./templates/on-start.template')
+    @onStartScript = _.template(onStartTemplate) options
+
+    pulseSubscribeTemplate = fs.readFileSync('./templates/pulse-subscribe.template')
+    @pulseSubscribeScript = _.template(pulseSubscribeTemplate) options
 
     callback()
 
@@ -63,12 +70,22 @@ class CommandMake
     dirname = path.join(__dirname, @outputDirectory)
     console.log "Saving files to #{dirname}"
     fs.mkdirpSync dirname
+
     deployPath = path.join(dirname, 'deploy-flow.sh')
-    clickTriggerPath = path.join(dirname, 'click-trigger.sh')
     fs.writeFileSync deployPath, @deployScript
     fs.chmodSync deployPath, '777'
+
+    clickTriggerPath = path.join(dirname, 'click-trigger.sh')
     fs.writeFileSync clickTriggerPath, @clickTriggerScript
     fs.chmodSync clickTriggerPath, '777'
+
+    onStartPath = path.join(dirname, 'on-start.sh')
+    fs.writeFileSync onStartPath, @onStartScript
+    fs.chmodSync onStartPath, '777'
+
+    pulseSubscribePath = path.join(dirname, 'pulse-subscribe.sh')
+    fs.writeFileSync pulseSubscribePath, @pulseSubscribeScript
+    fs.chmodSync pulseSubscribePath, '777'
 
   die: (error) =>
     if 'Error' == typeof error

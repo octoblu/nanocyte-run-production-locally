@@ -1,0 +1,14 @@
+#!/bin/bash
+
+if [ -z "$1" ]; then
+  echo "Usage: $0 [instanceUuid]"
+  exit 1
+fi
+
+FLOW_UUID=<%= flowUuid %>
+INSTANCE_UUID=$1
+
+DATA='{"devices": ["'$FLOW_UUID'"], "topic": "start", "payload": {"from": "engine-start"}}'
+#URL="http://nanocyte-engine.octoblu.com/flows/$UUID/instances/$INSTANCE_UUID/messages"
+URL="http://localhost:5050/flows/$FLOW_UUID/instances/$INSTANCE_UUID/messages"
+curl -X POST -H 'Content-Type: application/json' -d "$DATA" "$URL"

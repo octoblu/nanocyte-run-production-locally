@@ -1,0 +1,19 @@
+#!/bin/bash
+
+if [ -z "$1" ]; then
+  echo "Usage: $0 [instanceUuid]"
+  exit 1
+fi
+
+# HOST="https://nanocyte-engine.octoblu.com"
+PROTOCOL="http://"
+HOST="localhost:5050"
+# HOST="172.17.8.101:5050"
+
+FLOW_UUID=<%= flowUuid %>
+FLOW_TOKEN=<%= flowToken %>
+INSTANCE_UUID=$1
+
+URL="$PROTOCOL$FLOW_UUID:$FLOW_TOKEN@$HOST/flows/$FLOW_UUID/instances/$INSTANCE_UUID/messages"
+DATA='{"devices": ["'$FLOW_UUID'"], "topic": "subscribe:pulse"}'
+curl -X POST -H 'Content-Type: application/json' -d "$DATA" "$URL"

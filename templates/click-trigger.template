@@ -1,11 +1,9 @@
 #!/bin/bash
 
 if [ -z "$1" ]; then
-  echo "Usage: click-trigger.sh [instanceUuid]"
+  echo "Usage: $0 [instanceUuid]"
   exit 1
 fi
-
-# /flows//instances/
 
 # HOST="https://nanocyte-engine.octoblu.com"
 PROTOCOL="http://"
