@@ -1,0 +1,45 @@
+{
+  "name": "nanocyte-run-production-locally",
+  "version": "1.0.0",
+  "description": "Run Nanocyte flow locally",
+  "main": "index.js",
+  "scripts": {
+    "test": "exit 0"
+  },
+  "bin": {
+    "nanomakelocal": "./command-make.js",
+    "nanocyte-run-production-locally": "./command.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/octoblu/nanocyte-run-production-locally.git"
+  },
+  "keywords": [
+    "nanocyte",
+    "octoblu"
+  ],
+  "author": "Octoblu <dev@octoblu.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/octoblu/nanocyte-run-production-locally/issues"
+  },
+  "homepage": "https://github.com/octoblu/nanocyte-run-production-locally#readme",
+  "dependencies": {
+    "colors": "^1.1.2",
+    "commander": "^2.8.1",
+    "debug": "^2.2.0",
+    "fs-extra": "^0.24.0",
+    "lodash": "^3.10.1",
+    "meshblu-http": "^3.5.4"
+  },
+  "devDependencies": {
+    "chai": "^3.3.0",
+    "coffee-coverage": "^0.6.3",
+    "coffee-script": "^1.10.0",
+    "istanbul": "^0.3.22",
+    "mocha": "^2.3.3",
+    "mocha-istanbul": "^0.2.0",
+    "sinon": "^1.17.1",
+    "sinon-chai": "^2.8.0"
+  }
+}

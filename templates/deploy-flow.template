@@ -1,0 +1,9 @@
+#!/bin/bash
+
+USER_UUID=<%= userUuid %>
+USER_TOKEN=<%= userToken %>
+FLOW_UUID=<%= flowUuid %>
+
+#URL="http://$USER_UUID:$USER_TOKEN@nanocyte-flow-deploy.octoblu.com/flows/$FLOW_UUID/instances"
+URL="http://$USER_UUID:$USER_TOKEN@localhost:5051/flows/$FLOW_UUID/instances"
+curl --silent -i -X POST -H 'Content-Type: application/json' -d "$DATA" "$URL"
